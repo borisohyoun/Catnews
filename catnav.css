@@ -1,0 +1,294 @@
+html * {
+    box-sizing: border-box;
+}
+
+.container {
+    border: 1px solid black;
+    font-family: 'Yeon Sung', cursive;
+    background: #c1bebf;
+    margin: 30px auto;
+    height: 100%;
+}
+
+.container a {
+    text-decoration: none;
+    color: black;
+}
+
+#catnav img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.navchart {
+    border: 1px solid black;
+}
+
+.navchart * {
+    cursor: pointer;
+}
+
+.titlemenu {
+    font-size: 2rem;
+    padding: 3px 7px;
+    border-bottom: 2px dashed black;
+    letter-spacing: 8px;
+}
+
+.titlemenu:first-child {
+    border-top: 0;
+}
+
+.titlemenu:last-child {
+    border-bottom: none;
+}
+
+.nav4 {
+    font-size: 1.6rem;
+    padding: 2px 2px 2px 50px;
+    display: block;
+}
+
+.submenu {
+    display: none;
+}
+
+.submenu .nav4:hover {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+#footer {
+    border-top: 2px solid black;
+    margin-top: 30px;
+}
+
+.address {
+    margin: 20px auto;
+    text-align: right;
+    line-height: 20px;
+    padding-right: 20px;
+    font-size: 1.5rem;
+}
+
+#section {
+    font-size: 1.7rem;
+    justify-content: space-between;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.mainpagewrap {
+    border: 1px solid black;
+}
+
+.firstpage > * {
+    margin: 15px auto;
+    padding: 15px;
+}
+
+/*section.css*/
+
+#maintitle {
+    overflow: hidden;
+    margin: 20px auto;
+    padding: 0 !important;
+}
+
+#maintitle > * {
+    height: 160px;
+    padding: 0 !important;
+}
+
+.maintitletext {
+    padding: 0 !important;
+}
+
+.maintitleimg {
+    display: block;
+}
+
+.maintitleimg img {
+    margin: auto;
+    display: inline-block;
+}
+
+.catschool {
+    font-size: 7rem;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.catclass {
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 10px 0;
+}
+
+#section > * > * {
+    padding: 0 15px;
+}
+
+.userguide {
+    border: 2px solid green;
+}
+
+.guidewrite {
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 25px;
+}
+
+.history {
+    line-height: 30px;
+    border: 2px solid blue;
+}
+
+.adbanner {
+    padding: 0 !important;
+    border: 2px solid red;
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.adslides {
+    position: absolute;
+    overflow: hidden;
+    padding: 0 !important;
+    width: inherit;
+    height: inherit;
+    position: relative;
+}
+.adslides a{
+    height: 300px;
+    border:2px solid  blue;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 887px;
+    
+}
+.adslides a img {
+    width: 887px;
+    height: 300px;
+    position: absolute;
+    float: left;
+}
+
+.bannerbtn {
+    width: inherit;
+    height: 60%;
+    top: 50%;
+    border: 2px solid blue;
+    margin-top: -30px;
+    position: absolute;
+    z-index: 10;
+}
+
+.prev {
+    background: none;
+    font-size: 4rem;
+    float: left;
+    border: none;
+}
+
+.next {
+    background: none;
+    font-size: 4rem;
+    float: right;
+    border: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+.guidebtn {
+    /*    border: 2px solid white;*/
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -100px;
+    height: 15px;
+    overflow: hidden;
+
+}
+
+.guidebtn li {
+    float: left;
+    margin-left: 10px;
+    width: 16px;
+    height: 16px;
+}
+
+.guidebtn li a {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url(img/banner/BTN.PNG) no-repeat 0 0;
+    text-indent: -9999em;
+}
+
+.guidebtn li a.on {
+    background-position: 0 -16px;
+}
+
+/* inmed.css*/
+
+.snavmediin {
+    width: 60%;
+    margin: auto;
+    border: 2px solid pink;
+}
+
+.navmediin .memodate {
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
+    border: 2px solid orange;
+}
+
+.cattitle {
+    font-size: 3rem;
+    text-align: center;
+    padding: 0;
+    font-family: 'Yeon Sung', cursive;
+}
+
+.memodate {
+    border: 2px solid green;
+    text-overflow: ellipsis;
+}
+
+.calender {
+    border: 2px solid red;
+    font-size: 30px;
+}
+
+input {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.navbookmark .memodate {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.prolist {
+    border: 2px solid red;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 20%;
+    margin: 5px 10px;
+    display: inline-flex;
+}
+
+.prolist a {
+    text-decoration: none;
+    font-size: 15px;
+    color: darkslategray;
+    margin: auto 10px;
+}
