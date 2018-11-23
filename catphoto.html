@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+	<title> Title </title>
+<link rel="stylesheet" href="reset.css">
+<link rel="stylesheet" href="bori.css">
+<link rel="stylesheet" href="main.css">
+<link href="https://fonts.googleapis.com/css?family=East+Sea+Dokdo" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Yeon+Sung" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.12.4.js"></script> 
+	
+</head>
+<script>
+	$(function(){
+		function slides(){
+			var img=$('.slides_container').find('img');
+			img.eq(1).fadeIn(1000);
+			img.eq(0).fadeOut(1000,function(){
+				img.eq(0).appendTo($('.slides_container'));
+			});
+		}
+		setInterval(slides,2000);
+	})
+</script>	
+<style>
+	.memodate{
+	}
+	.memodate *{
+		float: none;
+	}
+	.slides_container{
+		position: relative;
+		width:400px;
+		height: 500px;
+		margin:50px auto;
+	}
+	.slides_container img{
+		height:500px;
+		width:400px;
+		position: absolute;
+		left: 0;
+		top:0;
+	}
+/*	그림의 크기가 다 다른데 그냥 x,y 0,0의 중심축에 사진중앙이 배치되는 법*/
+	.slides_container:not(:first-child){
+		display: none;
+	}
+</style>
+<body>
+<div class="memodate">
+<div class="slides_container">
+	<img src="img/bori.jpg" alt="">
+	<img src="img/bori1.JPG" alt="">
+	<img src="img/bori2.jpg" alt="">
+	<img src="img/bori3.jpg" alt="">
+	<img src="img/bori4.jpg" alt="">
+	<img src="img/bori5.jpg" alt="">
+	<img src="img/bori6.jpg" alt="">
+	<img src="img/bori7.jpg" alt="">
+	<img src="img/bori8.jpg" alt="">
+	<img src="img/bori9.jpg" alt="">
+	<img src="img/bori10.jpg" alt="">
+</div>
+<!--	<input type="file" value="v" class="submit">-->
+</div>	
+</body>
+</html>

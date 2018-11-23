@@ -2,12 +2,62 @@ html * {
     box-sizing: border-box;
 }
 
+body {
+    min-width: 768px;
+    width: 100%;
+}
+
+@media screen and (max-width:768px) {
+    #maintitle .maintitleimg {
+        display: none;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1200px) {
+    .container {
+        margin: 15px 15px;
+    }
+    #maintitle .maintitleimg {
+        width: 80%;
+        height: 80%;
+        margin-top: 20px;
+    }
+    #maintitle .maintitletext .catschool {
+        font-size: 5rem;
+        letter-spacing: 10px;
+        padding-top: 15px;
+    }
+    #maintitle .maintitletext .catclass {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+    .activeZone {
+        margin-right: 0;
+    }
+    #catnav {
+        padding: 0;
+    }
+    #catnav .titlemenu {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+    #catnav .submenu .nav4 {
+        padding: 2px 2px 2px 10px;
+        font-size: 13px;
+    }
+    #catnav .navclock .clockbox {
+        margin: 0;
+        padding-left: 10px;
+    }
+}
+
 .container {
     border: 1px solid black;
     font-family: 'Yeon Sung', cursive;
     background: #c1bebf;
     margin: 30px auto;
     height: 100%;
+    width: 90%;
 }
 
 .container a {
@@ -15,7 +65,55 @@ html * {
     color: black;
 }
 
-#catnav img {
+/*maintitle.css*/
+
+#maintitle {
+    overflow: hidden;
+    margin: 20px auto;
+    padding: 0 !important;
+}
+
+#maintitle > * {
+    height: 160px;
+    padding: 0 !important;
+}
+
+.maintitletext {
+    padding: 0 !important;
+    margin: auto 20px;
+    width: 60%;
+}
+
+.maintitleimg {
+    display: block;
+}
+
+.maintitleimg img {
+    margin: auto;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.catschool {
+    font-size: 7rem;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.catclass {
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.activeZone {
+    width: 100%;
+    overflow: hidden;
+    clear: both;
+}
+
+#catnav .titlemenu img {
     width: 30px;
     height: 30px;
     margin-right: 10px;
@@ -46,8 +144,9 @@ html * {
 
 .nav4 {
     font-size: 1.6rem;
-    padding: 2px 2px 2px 50px;
     display: block;
+    text-align: center;
+    padding-left: 20px;
 }
 
 .submenu {
@@ -58,27 +157,21 @@ html * {
     background: rgba(0, 0, 0, 0.12);
 }
 
-#footer {
-    border-top: 2px solid black;
-    margin-top: 30px;
-}
-
-.address {
-    margin: 20px auto;
-    text-align: right;
-    line-height: 20px;
-    padding-right: 20px;
-    font-size: 1.5rem;
-}
-
 #section {
     font-size: 1.7rem;
     justify-content: space-between;
     font-family: 'Nanum Gothic', sans-serif;
+    float: left;
 }
 
 .mainpagewrap {
     border: 1px solid black;
+}
+
+.firstpage {
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
 }
 
 .firstpage > * {
@@ -87,42 +180,6 @@ html * {
 }
 
 /*section.css*/
-
-#maintitle {
-    overflow: hidden;
-    margin: 20px auto;
-    padding: 0 !important;
-}
-
-#maintitle > * {
-    height: 160px;
-    padding: 0 !important;
-}
-
-.maintitletext {
-    padding: 0 !important;
-}
-
-.maintitleimg {
-    display: block;
-}
-
-.maintitleimg img {
-    margin: auto;
-    display: inline-block;
-}
-
-.catschool {
-    font-size: 7rem;
-    text-align: center;
-    border-bottom: 2px solid black;
-}
-
-.catclass {
-    font-size: 2.5rem;
-    text-align: center;
-    padding: 10px 0;
-}
 
 #section > * > * {
     padding: 0 15px;
@@ -145,41 +202,41 @@ html * {
 
 .adbanner {
     padding: 0 !important;
-    border: 2px solid red;
     height: 300px;
     width: 100%;
     overflow: hidden;
 }
 
 .adslides {
-    position: absolute;
+    /* position: absolute; */
     overflow: hidden;
     padding: 0 !important;
-    width: inherit;
+    width: 100%;
     height: inherit;
-    position: relative;
+    /*    position: relative;*/
 }
-.adslides a{
+
+.adslides a {
     height: 300px;
-    border:2px solid  blue;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 887px;
-    
-}
-.adslides a img {
-    width: 887px;
-    height: 300px;
-    position: absolute;
+    width: 100%;
     float: left;
+    overflow: hidden;
+    /*    position: relative;*/
+}
+
+.adslides a:not(:first-child) {
+    /*    display: none;*/
+}
+
+.adslides a img {
+    width: 100%;
+    height: 300px;
 }
 
 .bannerbtn {
     width: inherit;
     height: 60%;
     top: 50%;
-    border: 2px solid blue;
     margin-top: -30px;
     position: absolute;
     z-index: 10;
@@ -204,13 +261,12 @@ button:focus {
 }
 
 .guidebtn {
-    /*    border: 2px solid white;*/
     display: block;
     position: absolute;
     bottom: 0;
     left: 50%;
     margin-left: -100px;
-    height: 15px;
+    height: 20px;
     overflow: hidden;
 
 }
@@ -220,6 +276,14 @@ button:focus {
     margin-left: 10px;
     width: 16px;
     height: 16px;
+}
+
+.guidebtn li:first-child {
+    margin-left: 0;
+}
+
+.guidebtn li:last-child {
+    margin-right: 10px;
 }
 
 .guidebtn li a {
@@ -261,7 +325,7 @@ button:focus {
     text-overflow: ellipsis;
 }
 
-.calender {
+#calender {
     border: 2px solid red;
     font-size: 30px;
 }
@@ -275,6 +339,19 @@ input {
     width: 80%;
     margin: auto;
     margin-top: 20px;
+}
+
+.navclock .titlemenu {
+    padding: 5px 0;
+    display: block;
+}
+
+.navclock .clockbox {
+    margin: 10px 25px;
+    font-size: 16px;
+    display: inline-block;
+    letter-spacing: 2px;
+    white-space: pre-line;
 }
 
 .prolist {
@@ -291,4 +368,17 @@ input {
     font-size: 15px;
     color: darkslategray;
     margin: auto 10px;
+}
+
+#footer {
+    border-top: 2px solid black;
+    margin-top: 30px;
+}
+
+.address {
+    margin: 20px auto;
+    text-align: right;
+    line-height: 20px;
+    padding-right: 20px;
+    font-size: 1.5rem;
 }

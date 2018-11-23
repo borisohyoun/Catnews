@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+<link rel="stylesheet" href="reset.css">
+<link rel="stylesheet" href="bori.css">
+<link rel="stylesheet" href="main.css">
+<link href="https://fonts.googleapis.com/css?family=East+Sea+Dokdo" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Yeon+Sung" rel="stylesheet">
+	
+</head>
+
+	<body>
+	<div class="inmed">
+			<div class="cattitle">기타메모</div>
+			<div class="memodate">
+				<form action="">
+				<div class="calender">
+				  <script>
+				  document.write("<select name='birth' id='year'>");
+				  for (var i =2002; i<=2038;i++){
+				  document.write("<option value='"+i+"'>"+i+"</option>")
+				  }
+				  document.write("</select>");
+				  document.write("<select name='birth' id='month'>");
+				  for (var j =1; j<=12;j++){
+				  document.write("<option value='"+j+"'>"+j+"</option>")
+				  }
+				  document.write("</select>");
+				  document.write("<select name='birth' id='date'>");
+				  for (var k =1; k<=31;k++){
+					  document.write("<option value='"+k+"'>"+k+"</option>")
+				  }
+				  document.write("</select>");
+				  </script>
+				</div>
+				<input type="submit" value="v" class="submit">
+				</form>
+			</div>
+		</div>
+</body>
+</html>
