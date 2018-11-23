@@ -1,0 +1,2 @@
+hello this is my first git .
+this is for my cat "BORI"
