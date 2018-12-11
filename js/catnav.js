@@ -50,37 +50,39 @@
 
 
         //banner
-        var adimgW = $('.adslides').find('img').width();
-        var adimgNum = $('.adslides').find('img').length;
-        $('.adslides').width(adimgNum * adimgW);
-        var adtimer = setInterval(adslidesMove, 3000);
+        //1. 한줄로 모든 이미지를 정렬한다. 
+        //2. 1번째 사진은 6번째 사진 뒤로 간다. 
+        //3. 일정 시간 후 일정 시간에 걸쳐 왼쪽으로 이동한다. 
+        //4. 계속 반복한다.
 
-        function adslidesMove() {
-            var rolling = $('.adslides').find('a');
-            rolling.eq(0).animate({
-                left: adimgW
-            }, 1000, function () {
-                rolling.eq(0).appendTo($('.adslides'));
-            });
-            rolling.eq(1).animate({
-                left: adimgW
-            });
+        //배너 밑에 li를 찾는다
+        var slideMove = $('.adslides').children('img');
+        //li의 width를 찾는다. 
+        var imgW = slideMove.width();
+        // li의 갯수를 찾는다. 
+        var imgCount = slideMove.length;
+        //배너의 총 길이를 찾는다. 
+        var toImgW = imgW * imgCount;
+        var adtimer = setInterval(adslidesMove,3000);
+        
+        function adslidesMove(){
+            slideMove.eq(0).appendTo($('.adslides'));
+            slideMove.eq(1).css({left : 0 , position : 'absolute'},1500);
         }
-        setInterval(adslidesMove, 3000);
+        
 
-        var currentNum = 0;
-        var newNum = currentNum + 1;
-
-        $('.prev').on('click', function (event) {
-            event.preventDefault();
+        $('.next').click(function(){
             clearInterval(adtimer);
-            newNum = currentNum - 1;
-            if (newNum <= 6) {
-                newNum = adimgNum - 1;
-            }
-            setInterval(adslidesMove, 3000);
-        });
+            adslidesMove();
+            adtimer = setInterval(adslidesMove,3000);
+        })
 
+         $('.prev').click(function(){
+            clearInterval(adtimer);
+            
+            adtimer = setInterval(adslidesMove,3000);
+        })
+        
         //calender
         function calender() {
             document.write("<select name='birth' id='year'>");
@@ -100,7 +102,6 @@
             document.write("</select>");
         }
         console.log(calender);
-
 
         //catnav
         $('.navmediin').on('click', function () {
