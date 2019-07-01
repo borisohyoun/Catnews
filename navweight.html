@@ -1,45 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title> Title </title>
-<link rel="stylesheet" href="reset.css">
-<link rel="stylesheet" href="bori.css">
-<link rel="stylesheet" href="main.css">
-<link href="https://fonts.googleapis.com/css?family=East+Sea+Dokdo" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Yeon+Sung" rel="stylesheet">
-	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="bori.css">
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=East+Sea+Dokdo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung" rel="stylesheet">
+    <script type="text/javascript" src="./js/plugins/jqplot.barRenderer.js"></script>
+    <script type="text/javascript" src="./js/plugins/jqplot.categoryAxisRenderer.js"></script>
+    <script>
+        jQuery(document).ready(function() {
+
+
+
+            var member = [9, 8, 6, 8, 7, 6, 4];
+            var album = [2, 3, 4, 10, 8, 5, 1];
+
+
+
+            jQuery("#chart").jqplot([member, album], {
+                title: "막대 그래프",
+                series: [
+
+                    // 첫번째 블록에서 member 배열에 대핸 데이터를 처리한다.
+                    {
+                        // member 배열을 막대 그래프 차트로 나타낸다. 
+                        renderer: jQuery.jqplot.BarRenderer
+                    }
+                ],
+                axes: {
+                    xaxis: {
+                        renderer: jQuery.jqplot.CategoryAxisRenderer,
+                        ticks: ['트와이스', '러블리즈', '여자친구', 'AOA', '에이핑크', '라붐', '블랙핑크']
+                    }
+                }
+            });
+        });
+
+    </script>
 </head>
 
-	<body>
-	<div class="snavweight">
-			<div class="cattitle">체중그래프</div>
-			<div class="memodate">
-				 <form action="">
-				 <div class="calender">
-				  <script>
-				  document.write("<select name='birth' id='year'>");
-				  for (var i =2002; i<=2038;i++){
-				  document.write("<option value='"+i+"'>"+i+"</option>")
-				  }
-				  document.write("</select>");
-				  document.write("<select name='birth' id='month'>");
-				  for (var j =1; j<=12;j++){
-				  document.write("<option value='"+j+"'>"+j+"</option>")
-				  }
-				  document.write("</select>");
-				  document.write("<select name='birth' id='date'>");
-				  for (var k =1; k<=31;k++){
-					  document.write("<option value='"+k+"'>"+k+"</option>")
-				  }
-				  document.write("</select>");
-				  </script>
-				  </div>
-				 <input type="submit" value="v" class="submit">
-				 </form>
-			</div>
-		</div>
+<body>
+    <div class="snavweight">
+        <div class="cattitle">체중그래프</div>
+        <div id="chart" style="width:780px;height:304px;">
+            <!--
+<div class="memodate">
+    <form action="">
+        <div class="calender">
+            <script>
+                document.write("<select name='birth' id='year'>");
+                for (var i = 2002; i <= 2038; i++) {
+                    document.write("<option value='" + i + "'>" + i + "</option>")
+                }
+                document.write("</select>");
+                document.write("<select name='birth' id='month'>");
+                for (var j = 1; j <= 12; j++) {
+                    document.write("<option value='" + j + "'>" + j + "</option>")
+                }
+                document.write("</select>");
+                document.write("<select name='birth' id='date'>");
+                for (var k = 1; k <= 31; k++) {
+                    document.write("<option value='" + k + "'>" + k + "</option>")
+                }
+                document.write("</select>");
+            </script>
+        </div>
+        <input type="submit" value="v" class="submit">
+    </form>
+</div>
+-->
+        </div>
 </body>
+
 </html>
