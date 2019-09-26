@@ -1,5 +1,6 @@
 html * {
     box-sizing: border-box;
+    background: #c1bebf;
 }
 
 body {
@@ -54,7 +55,7 @@ body {
 .container {
     border: 1px solid black;
     font-family: 'Yeon Sung', cursive;
-    background: #c1bebf;
+    /* background: #c1bebf; */
     margin: 30px auto;
     height: 100%;
     width: 90%;
@@ -186,7 +187,7 @@ body {
 }
 
 .userguide {
-    border: 2px solid green;
+    border: 2px solid none;
 }
 
 .guidewrite {
@@ -197,36 +198,38 @@ body {
 
 .history {
     line-height: 30px;
-    border: 2px solid blue;
+    border-right: 2px dashed black;
+
 }
 
 .adbanner {
     padding: 0 !important;
     height: 300px;
-    width: 100%;
+    max-width: 890px;
     overflow: hidden;
     position: relative;
 }
 
 .adslides {
-    position: relative;
+    position: absolute;
     overflow: hidden;
     padding: 0 !important;
     width: 100%;
-    border:2px solid blue;
+    height: 100%;
+    border:2px solid none;
 }
-.adslides img{
-    float: left;
-    width: 330px;
-    height: 300px;
-    border:2px solid red;
-    left: 0;
-    top:0;
-}
-
-.bannerbtn {
+.adslides a{
+    position: absolute;
     width: 100%;
-    height: 150px;
+    height: 300px;
+    text-align: center;
+}
+.adslides a img{
+    width:100%;
+    height:300px;
+}
+.bannerbtn {
+    height: 170px;
     position: absolute;
     top:120px;
     z-index: 10;
@@ -252,14 +255,15 @@ button:focus {
 }
 
 .guidebtn {
-    display: block;
+    display: flex;
+    justify-content: center;
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    margin-left: -100px;
+    bottom: 20px;
+    left:0;
+    right:0;
     height: 20px;
     overflow: hidden;
-
+    border:2px solid none;
 }
 
 .guidebtn li {
@@ -267,6 +271,11 @@ button:focus {
     margin-left: 10px;
     width: 16px;
     height: 16px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url(img/banner/BTN.PNG) no-repeat 0 0;
+    text-indent: -9999em;
 }
 
 .guidebtn li:first-child {
@@ -277,31 +286,37 @@ button:focus {
     margin-right: 10px;
 }
 
-.guidebtn li a {
-    display: block;
-    width: 16px;
-    height: 16px;
-    background: url(img/banner/BTN.PNG) no-repeat 0 0;
-    text-indent: -9999em;
-}
 
-.guidebtn li a.on {
+.guidebtn li.on {
     background-position: 0 -16px;
 }
 
 /* inmed.css*/
-
-.snavmediin {
-    width: 60%;
-    margin: auto;
-    border: 2px solid pink;
+.snavmedi{
+    width:930px;
+    margin: 0 auto;
+    overflow: hidden;
 }
-
-.navmediin .memodate {
-    width: 60%;
+.snavmediin {
+    margin: auto;
+    border:2px solid red;
+    display:block;
+    overflow: hidden;
+}
+.snavmediin .canvasjs-chart-toolbar{
+    display: none;
+}
+.snavmediout{
+    display: block;
+    border:2px solid green;
+    display:block;
+    
+}
+ .memodate {
+    overflow: hidden;
     margin: auto;
     margin-top: 20px;
-    border: 2px solid orange;
+    text-overflow: ellipsis;
 }
 
 .cattitle {
@@ -311,10 +326,6 @@ button:focus {
     font-family: 'Yeon Sung', cursive;
 }
 
-.memodate {
-    border: 2px solid green;
-    text-overflow: ellipsis;
-}
 
 #calender {
     border: 2px solid red;
@@ -323,13 +334,6 @@ button:focus {
 
 input {
     font-size: 20px;
-    margin-top: 10px;
-}
-
-.navbookmark .memodate {
-    width: 80%;
-    margin: auto;
-    margin-top: 20px;
 }
 
 .navclock .titlemenu {
@@ -345,20 +349,52 @@ input {
     white-space: pre-line;
 }
 
-.prolist {
-    border: 2px solid red;
+.snavbookmark{
+    overflow: hidden;
+}
+.snavbookmark .prolist {
     text-align: center;
     border: 1px solid black;
-    border-radius: 20%;
-    margin: 5px 10px;
+    padding: 20px;
     display: inline-flex;
 }
 
-.prolist a {
-    text-decoration: none;
-    font-size: 15px;
-    color: darkslategray;
-    margin: auto 10px;
+.snavbookmark .prolist .form {
+    width:100%;
+}
+
+.snavbookmark .prolist .form .form-group{
+    overflow:hidden;
+}
+
+/* .snavbookmark .prolist .form .half_form{
+    overflow:hidden;
+    float:right;
+} */
+
+.snavbookmark .prolist .form .form-group .inputDnD{
+     width:100%;
+     height: 300px;
+     border:1px solid rgba(0,0,0,0.3);
+     display: block;
+}
+
+.snavbookmark .prolist .form .form-group>*{
+    display: inline;
+    font-size: 1.5rem;
+}
+.snavbookmark .prolist .form .form-group label{
+    width:15%;
+    text-align:right;
+    display:inline-block;
+    color: #F5F5DC;
+}
+.snavbookmark .prolist .form .form-group input{
+    width:80%;
+    display:inline-block;
+    border:none;
+    background-color: #c1bebf;
+    padding-left:15px;
 }
 
 #footer {

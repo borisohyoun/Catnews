@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css">
     <link href="https://fonts.googleapis.com/css?family=Yeon+Sung" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=East+Sea+Dokdo" rel="stylesheet">
@@ -13,13 +13,15 @@
     <link rel="stylesheet" href="fontello/css/fontello.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" media="all and (min-width:770px)" href="catnav.css">
+   <link rel="stylesheet" href="jquery-ui-1.12.1.custom">
+   <link rel="stylesheet" media="all and (min-width:770px)" href="catnav.css">
     <link rel="stylesheet" href="catnav.css">
+    <script src="js/catnav.js"></script>
     <title>보리통신문-메인페이지입니다.</title>
 </head>
 
 <body class="container ">
-    <div id="maintitle" class="col-md-12 row justify-content-md-center">
+    <div id="maintitle" class="col-md-12 row justify-content-md-center order-first">
         <div class="maintitleimg col-md-2 "><img src="img/flower.png" alt=""></div>
         <div class="maintitletext col">
             <div class="catschool">보리통신문</div>
@@ -29,72 +31,63 @@
     </div>
     <div class="activeZone row">
         <div id="catnav" class="col-md-2">
-            <div class="navchart">
-                <div class="navmedi">
-                    <div class="titlemenu"><img src="img/footmenu.png" alt="">복용약</div>
-                    <div class="submenu">
-                        <div class="navmediout">
-                            <div class="nav4">외부구충제</div>
-                        </div>
-                        <div class="navmediin">
-                            <div class="nav4">내부구충제</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="navhealth">
+            <ul class="navchart">
+                
+                <li class="navhealth">
                     <div class="titlemenu"><img src="img/footmenu.png" alt="">건강기록</div>
                     <div class="submenu">
+                        <div class="navmedi">
+                            <div class="nav4">구충제</div>
+                        </div>
                         <div class="navhos">
                             <div class="nav4">내원내역</div>
+                        </div>
+                        <div class="navweight">
+                            <div class="nav4">건강기록</div>
                         </div>
                         <div class="navmemo">
                             <div class="nav4">기타메모</div>
                         </div>
-                        <div class="navweight">
-                            <div class="nav4">체중변화</div>
-                        </div>
                     </div>
-                </div>
-                <div class="navphoto">
+                </li>
+                <li class="navphoto">
                     <div class="titlemenu"><img src="img/footmenu.png" alt="">갤러리</div>
                     <div class="submenu"></div>
-                </div>
-                <div class="navbookmark">
-                    <div class="titlemenu"><img src="img/footmenu.png" alt="">바로구매</div>
+                </li>
+                <li class="navbookmark">
+                    <div class="titlemenu"><img src="img/footmenu.png" alt="">용품</div>
                     <div class="submenu">
                     </div>
-                </div>
-                <div class="navclock">
-                    <div class="titlemenu">
-                        <div class="clockbox"></div>
-                    </div>
-                </div>
-            </div>
+                </li>
+                <li class="navclock">
+                        <div class="clockbox titlemenu"></div>
+                </li>
+            </ul>
         </div>
         <div id="section" class="col-md-10 order-first">
             <div class="mainpagewrap">
                 <!--이제 여기만 화면이 바뀔 예정 -->
-                <div class="firstpage row">
+                <div class="firstpage row order-last">
                     <div class="adbanner row col-md-12">
-                        <ul class="adslides col-md-12">
-                            <img src="img/banner/banner1.jpg" alt="">
-                            <img src="img/banner/banner2.jpg" alt="">
-                            <img src="img/banner/banner3.jpg" alt="">
-                            <img src="img/banner/banner4.jpg" alt="">
-                            <img src="img/banner/banner5.jpg" alt="">
-                            <img src="img/banner/banner6.jpg" alt="">
-                        </ul>
+                        <div class="adslides col-md-12">
+                            <a><img src="img/banner/banner1.jpg" alt=""></a>
+                            <a><img src="img/banner/banner2.jpg" alt=""></a>
+                            <a><img src="img/banner/banner3.jpg" alt=""></a>
+                            <a><img src="img/banner/banner4.jpg" alt=""></a>
+                            <a><img src="img/banner/banner5.jpg" alt=""></a>
+                            <a><img src="img/banner/banner6.jpg" alt=""></a>
+                        </div>
                         <div class="bannerbtn col-md-12">
                             <button type="button" class="prev icon-angle-left">&lt;</button>
                             <button type="button" class="next icon-angle-right">&gt;</button>
-                            <ul class="guidebtn">
-                                <li class="on"><a href=""></a></li>
-                                <li><a href=""></a></li>
-                                <li><a href=""></a></li>
-                                <li><a href=""></a></li>
-                                <li><a href=""></a></li>
-                                <li><a href=""></a></li>
-                            </ul>
+                        </div>
+                        <div class="guidebtn">
+                            <li class="on">버튼1</li>
+                            <li>버튼2</li>
+                            <li>버튼3</li>
+                            <li>버튼4</li>
+                            <li>버튼5</li>
+                            <li>버튼6</li>
                         </div>
                     </div>
                     <div class="history col-md-6">
@@ -107,8 +100,8 @@
                             <li>체중 그래프를 이용하여 아이의 몸무게를 한눈에 파악하세요</li>
                             <li>내. 외부 구충제를 잊지 말고 접종시켜주세요</li>
                             <li>즐겨찾기는 최대 10개까지 등록 가능합니다. </li>
-                            <li>계정문의는 아래 기재된 카카오톡 플러스 친구를 이용하여 문의하여주세요</li>
-                            <li>기타 메모에는 아이의 식습관, 알러지, 등등의 세부사항을 자유롭게 적어주세요. </li>
+                            <li>계정문의는 카카오톡 플러스 친구를 이용하여 문의하여주세요</li>
+                            <li>기타 메모에는 아이의 식습관, 알러지, 등등의 세부사항을 적어주세요. </li>
                         </ul>
                     </div>
                 </div>

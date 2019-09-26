@@ -13,41 +13,124 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="fontello/css/fontello.css">
     <link rel="stylesheet" href="catnav.css">
-    <link rel="stylesheet" href="catnav.js">
-    <!--	//position absolute 하고 animate에 top좌표 찍기. -->
+    <link rel="stylesheet" href="js/catnav.js">
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
     <title>내부구충제</title>
+    <script>
+        window.onload = function () {
+
+            //Better to construct options first and then pass it as a parameter
+            var options = {
+                title: {
+                    text: "내부구충제 접종 기록"
+                },
+                animationEnabled: true,
+                exportEnabled: true,
+                data: [{
+                    type: "spline", //change it to line, area, column, pie, etc
+                    dataPoints: [{
+                            x: 19 / 1,
+                            y: 3
+                        },
+                        {
+                            x: 19 / 2,
+                            y: 12
+                        },
+                        {
+                            x: 19 / 3,
+                            y: 8
+                        },
+                        {
+                            x: 19 / 4,
+                            y: 14
+                        },
+                        {
+                            x: 19 / 5,
+                            y: 6
+                        },
+                        {
+                            x: 19 / 6,
+                            y: 24
+                        },
+                        {
+                            x: 19 / 7,
+                            y: 7
+                        },
+                        {
+                            x: 19 / 8,
+                            y: 10
+                        }
+                    ]
+                }]
+            };
+            $("#chartContainer").CanvasJSChart(options);
+
+        }
+    </script>
+    <style>
+        .memodate * {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .cal_glance {
+            border: 2px solid green;
+            height: 100px;
+        }
+
+        .cal_glance li {
+            border: 2px solid blue;
+            height: 80px;
+        }
+
+        .glance_month {
+            border: 2px solid red;
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="snavmediin">
-        <div class="cattitle">내부구충제</div>
-        <div class="memodate">
-            <form action="">
-                <div class="calender">
-                    <script>
-                        document.write("<select name='birth' id='year'>");
-                        for (var i = 2002; i <= 2038; i++) {
-                            document.write("<option value='" + i + "'>" + i + "</option>")
-                        }
-                        document.write("</select>");
-                        document.write("<select name='birth' id='month'>");
-                        for (var j = 1; j <= 12; j++) {
-                            document.write("<option value='" + j + "'>" + j + "</option>")
-                        }
-                        document.write("</select>");
-                        document.write("<select name='birth' id='date'>");
-                        for (var k = 1; k <= 31; k++) {
-                            document.write("<option value='" + k + "'>" + k + "</option>")
-                        }
-                        document.write("</select>");
-                    </script>
-                </div>
-                <input type="text" value="처방 약 종류" class="submit">
-                <input type="submit" value="v" class="submit">
-            </form>
+    <div class="snavmedi">
+        <div class="snavmediin">
+            <div class="cattitle">구충내역</div>
+            <div class="memodate">
+                <form action="" class="col-sm-12 col-md-4" style="border:2px solid red">
+                    <select name="" id="">
+                        <option value="내부구충제">내부구충제</option>
+                        <option value="외부구충제">외부구충제</option>
+                    </select>
+                    <div class="calender">
+                        <script>
+                            document.write("<select name='birth' id='year'>");
+                            for (var i = 2002; i <= 2038; i++) {
+                                document.write("<option value='" + i + "'>" + i + "</option>")
+                            }
+                            document.write("</select>");
+                            document.write("<select name='birth' id='month'>");
+                            for (var j = 1; j <= 12; j++) {
+                                document.write("<option value='" + j + "'>" + j + "</option>")
+                            }
+                            document.write("</select>");
+                            document.write("<select name='birth' id='date'>");
+                            for (var k = 1; k <= 31; k++) {
+                                document.write("<option value='" + k + "'>" + k + "</option>")
+                            }
+                            document.write("</select>");
+                        </script>
+                    </div>
+                    <input type="submit" value="v" class="submit">
+                </form>
+                <div id="chartContainer" class="memograph col-sm-12 col-md-8"
+                    style="height: 300px;border:2px solid blue;"></div>
+
+            </div>
         </div>
     </div>
 
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
 </body>
 
 </html>

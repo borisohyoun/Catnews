@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+    <div class="adbanner">
+            <div class="adslides">
+              <a><img src="img/banner/banner1.jpg" alt=""></a>
+              <a><img src="img/banner/banner2.jpg" alt=""></a>
+              <a><img src="img/banner/banner3.jpg" alt=""></a>
+              <a><img src="img/banner/banner4.jpg" alt=""></a>
+              <a><img src="img/banner/banner5.jpg" alt=""></a>
+              <a><img src="img/banner/banner6.jpg" alt=""></a>            
+            </div>
+            <ul class="guidebtn">
+              <li class="on">버튼1</li>
+              <li>버튼2</li>
+              <li>버튼3</li>
+              <li>버튼4</li>
+              <li>버튼5</li>
+              <li>버튼6</li>
+
+            </ul>
+            <button class="prev">좌</button>
+            <button class="next">우</button>
+          </div>
+          
+<style>
+ * {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.adbanner {
+  width: 400px;
+  height: 200px;
+  margin: 0 auto;
+  background-color: aqua;
+  position: relative;
+  overflow: hidden;
+}
+
+.adbanner .adslides {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.adbanner .adslides a{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  color: #fff;
+  font-size: 30px;
+  display: block;
+}
+
+.adslides a img{
+    width:100%;
+    height:100%;
+}
+
+.guidebtn {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  margin-left: -70px;
+}
+
+.guidebtn li {
+  float: left;
+  width: 20px;
+  height: 20px;
+  background-color: cadetblue;
+  border-radius: 50%;
+  text-indent: -9999px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.guidebtn .on {
+  background-color: #000;
+}
+
+.guidebtn li:hover {
+  background-color: #000;
+}
+
+.guidebtn li:last-child {
+  margin-right: 0px;
+}
+
+.prev {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: aqua;
+  margin-top: -15px;
+}
+
+.next {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: aqua;
+  margin-top: -15px;
+}
+
+</style>
+<script> 
+  $(document).ready(function() {
+
+//좌우버튼, 동그라미 버튼 연동 //
+
+var wid = $(".adbanner").width();
+var i = $(".guidebtn li.on").index();
+var len = $(".adslides a").length;
+
+$(".prev").click(function() {
+
+
+  if (i == 0) {
+
+    i = len - 1;
+
+
+  } else {
+
+    i = i - 1;
+
+  }
+
+  showSlide();
+});
+
+$(".next").click(function() {
+
+  if (i == 5) {
+
+    i = 0;
+
+
+  } else {
+
+    i = i + 1;
+
+  }
+  showSlide();
+});
+
+$(".guidebtn li").click(function() {
+
+  i = $(this).index();
+
+  showSlide();
+
+
+});
+
+function showSlide() {
+  $(".guidebtn li").removeClass("on");
+  $(".guidebtn li").eq(i).addClass("on");
+  $(".adslides a").stop(true, true).fadeOut();
+  $(".adslides a").eq(i).stop(true, true).fadeIn();
+}
+
+
+});
+
+</script>
+</body>
+</html>

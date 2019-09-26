@@ -2,26 +2,23 @@
   <div>
 
     <!-- <div v-bind:class="divClass">hello</div> -->
-    <h1>test</h1>
-    <a v-bind:href="'http://www.google.com'" v-on:click.prevent="alertHello">google</a>
-    <form v-bind:id="myform" v-bind:method="GET">
-      <input type="text">
-      <input type="submit" placeholder="submit">
-    </form>
+    <h1> name: {{ fullName }}</h1>
+    <input type="text" v-model="newName" v-on:keyup.enter="changeName()">
+    <button v-on:click="alertTest()">test</button>
     <!-- <datepicker 
       v-bind:language="en" 
-      v-bind:placeholder="Date of birth" 
+      v-bind:placeholder="'Date of birth'" 
       v-bind:input-class="{'datepicker-input-reg': true, 'is-invalid-input': errors.has('event_date')}" 
-      v-bind:min="2000-01-01"  
-      v-bind:max="2010-12-31" 
-      v-bind:data-vv-as="Please enter your birthdate" 
-      v-model="event_date" 
+      v-bind:min="'2000-01-01'"  
+      v-bind:max="'2010-12-31'" 
+      v-bind:data-vv-as="'Please enter your birthdate'" 
+      v-model="'event_date'" 
       v-bind:v-validate="{required: true, date_format: 'YYYY-MM-DD'}" 
       name="event_date" id="event_date" 
       @change="saveChanges">
-</datepicker> -->
-<!-- <span 
-    class="form-error" 
+</datepicker>
+<span 
+    class="'form-error'" 
     :class="{'is-visible': errors.has('event_date')}">{{ errors.first('event_date') }}
 </span> -->
   </div>
@@ -32,18 +29,34 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      isHidden: false,
-      hasError: false,
+      title: 'hello world',
+      firstName: 'seul',
+      lastName: 'kim',
+      newName: ''
     }
   },
-  methods : {
-    alertHello: function() {
-      alert('hello')
+  methods: {
+    changeName: function() {
+      this.fullName = this.newName
+    },
+    alertTest: function() {
+      alert('test')
     }
-    // change: function(){
-    //   this.
-    // }
-  }
+  },
+  computed: {
+    fullName: {
+      // getter
+      get: function () {
+        return this.firstName + ' ' + this.lastName
+      },
+      // setter
+      set: function (newValue) {
+        var names = newValue.split(' ')
+        this.firstName = names[0]
+        this.lastName = names[names.length - 1]
+      }
+    }
+}
 }
 </script>
 
