@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="fontello/css/fontello.css">
 	<link rel="stylesheet" href="catnav.css">	
+	<title>내원내역</title>
 	<script>
         function previewImage(targetObj, View_area) {
 	var preview = document.getElementById(View_area); //div id
@@ -98,32 +99,31 @@
                     		</div>
 							<div class="hosInput col-xs-12 col-sm-6">
 								<div class="form-group">
-								<label for="inputDate">방문 날짜</label>
-								<input type="date" max="9999-12-31" id='currentDate'>
-								<script>
-									document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
-								  </script>
+									<label for="inputDate">방문 날짜</label>
+									<input type="date" max="9999-12-31" id='currentDate'>
+									<script>
+										document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
+								  	</script>
 				  				</div> 
-							<div class="form-group">
-								<label for="inputHosName">병원 이름</label>
-								<input type="text" class="form-control" id="inputNamae" maxlength="25" name="name" placeholder="방문한 병원의 이름을 입력해주세요." required>
-							</div>
-							<div class="form-group">
-								<label for="inputSymptom">증상 기록 </label>
-								<textarea name="opinion" cols="55" rows="10" class="form-control" name="title" id="inputContents" placeholder="증상과 진료 내역을 작성해주세요." required></textarea>
-							</div> 
-							
-							<br>
-							<div class="form-group">
-								<button type="button" class="btn btn-success btn-lg float-right" id="submit-button">Register</button>
-								<input type="submit" class="hide" id="real-submit"/>
-							</div>
-						</div>	 
-					</div>    
-                </form>
-            </div>
-
+								<div class="form-group">
+									<label for="inputHosName">병원 이름</label>
+									<input type="text" class="form-control" id="inputNamae" maxlength="25" name="name" placeholder="방문한 병원의 이름을 입력해주세요." required>
+								</div>
+								<div class="form-group">
+									<label for="inputSymptom">증상 기록 </label>
+									<textarea name="opinion" cols="55" rows="10" class="form-control" name="title" id="inputContents" placeholder="증상과 진료 내역을 작성해주세요." required></textarea>
+								</div> 
+								
+								<br>
+								<div class="form-group">
+									<button type="button" class="btn btn-success btn-lg float-right" id="submit-button">Register</button>
+									<input type="submit" class="hide" id="real-submit"/>
+								</div>
+							</div>	 
+						</div>    
+                	</form>
+            	</div>
+			</div>
 		</div>
-		</div>
-</body>
+	</body>
 </html>

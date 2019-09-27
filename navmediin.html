@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="js/catnav.js">
     <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
     <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-    <title>내부구충제</title>
+    <title>구충내역</title>
     <script>
         window.onload = function () {
 
@@ -69,63 +69,51 @@
         }
     </script>
     <style>
-        .memodate * {
-            padding-left: 0;
-            padding-right: 0;
-        }
-
         .cal_glance {
-            border: 2px solid green;
             height: 100px;
         }
 
         .cal_glance li {
-            border: 2px solid blue;
             height: 80px;
         }
 
         .glance_month {
-            border: 2px solid red;
             font-size: 1.2rem;
         }
     </style>
 </head>
 
 <body>
-    <div class="snavmedi">
+    <div class="snavmedi container">
         <div class="snavmediin">
             <div class="cattitle">구충내역</div>
             <div class="memodate">
-                <form action="" class="col-sm-12 col-md-4" style="border:2px solid red">
-                    <select name="" id="">
-                        <option value="내부구충제">내부구충제</option>
-                        <option value="외부구충제">외부구충제</option>
-                    </select>
-                    <div class="calender">
-                        <script>
-                            document.write("<select name='birth' id='year'>");
-                            for (var i = 2002; i <= 2038; i++) {
-                                document.write("<option value='" + i + "'>" + i + "</option>")
-                            }
-                            document.write("</select>");
-                            document.write("<select name='birth' id='month'>");
-                            for (var j = 1; j <= 12; j++) {
-                                document.write("<option value='" + j + "'>" + j + "</option>")
-                            }
-                            document.write("</select>");
-                            document.write("<select name='birth' id='date'>");
-                            for (var k = 1; k <= 31; k++) {
-                                document.write("<option value='" + k + "'>" + k + "</option>")
-                            }
-                            document.write("</select>");
-                        </script>
-                    </div>
-                    <input type="submit" value="v" class="submit">
-                </form>
+                <div class="prolist col-sm-12 col-md-4">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="mediType">구충 종류</label>
+                            <select name="" id="">
+                                <option value="내부구충제">내부구충제</option>
+                                <option value="외부구충제">외부구충제</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDate">구충 날짜</label>
+                            <input type="date" max="9999-12-31" id='currentDate'>
+                            <script>
+                                document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
+                            </script>
+                        </div> 
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success btn-lg float-right" id="submit-button">Register</button>
+                            <input type="submit" class="hide" id="real-submit" />
+                        </div>
+                    </form>
+                </div> 
                 <div id="chartContainer" class="memograph col-sm-12 col-md-8"
-                    style="height: 300px;border:2px solid blue;"></div>
-
-            </div>
+                style="height: 300px;"></div>
+                </div>                 
+            </div> 
         </div>
     </div>
 

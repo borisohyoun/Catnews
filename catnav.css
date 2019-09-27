@@ -536,11 +536,14 @@ body {
   li {
     padding-left: 0;
     list-style-type: none; }
-  
+  label{
+      font-size: 1.5rem;
+    color:#5E610B;
+  }
   button,
   input,
   textarea,
-  select {
+  {
     padding: 0;
     border: none;
     -webkit-appearance: none;
@@ -565,7 +568,10 @@ body {
     background-color: transparent;
     cursor: pointer; }
  
-
+select{
+    height: 30px;
+    font-size: 1.5rem;
+}
 .container a {
     text-decoration: none;
     color: black;
@@ -798,24 +804,25 @@ button:focus {
 
 /* inmed.css*/
 .snavmedi{
-    width:930px;
-    margin: 0 auto;
     overflow: hidden;
 }
 .snavmediin {
     margin: auto;
-    border:2px solid red;
     display:block;
     overflow: hidden;
+}
+.snavmediin .memodate{
+    height: 300px;
+}
+.snavmediin .memodate .prolist{
+    height: 300px;
+    border-right:2px dashed black; 
 }
 .snavmediin .canvasjs-chart-toolbar{
     display: none;
 }
-.snavmediout{
-    display: block;
-    border:2px solid green;
-    display:block;
-    
+.snavmedi .prolist{
+    display: inline; 
 }
  .memodate {
     overflow: hidden;
@@ -834,7 +841,6 @@ button:focus {
 
 
 #calender {
-    border: 2px solid red;
     font-size: 30px;
 }
 
@@ -861,7 +867,6 @@ input {
 }
 .prolist {
     text-align: center;
-    border: 1px solid black;
     padding: 20px;
     overflow: hidden;
 }

@@ -16,193 +16,224 @@
     <title>용품</title>
     <script>
         function previewImage(targetObj, View_area) {
-	var preview = document.getElementById(View_area); //div id
-	var ua = window.navigator.userAgent;
+            var preview = document.getElementById(View_area); //div id
+            var ua = window.navigator.userAgent;
 
-  //ie일때(IE8 이하에서만 작동)
-	if (ua.indexOf("MSIE") > -1) {
-		targetObj.select();
-		try {
-			var src = document.selection.createRange().text; // get file full path(IE9, IE10에서 사용 불가)
-			var ie_preview_error = document.getElementById("ie_preview_error_" + View_area);
+            //ie일때(IE8 이하에서만 작동)
+            if (ua.indexOf("MSIE") > -1) {
+                targetObj.select();
+                try {
+                    var src = document.selection.createRange().text; // get file full path(IE9, IE10에서 사용 불가)
+                    var ie_preview_error = document.getElementById("ie_preview_error_" + View_area);
 
 
-			if (ie_preview_error) {
-				preview.removeChild(ie_preview_error); //error가 있으면 delete
-			}
+                    if (ie_preview_error) {
+                        preview.removeChild(ie_preview_error); //error가 있으면 delete
+                    }
 
-			var img = document.getElementById(View_area); //이미지가 뿌려질 곳
+                    var img = document.getElementById(View_area); //이미지가 뿌려질 곳
 
-			//이미지 로딩, sizingMethod는 div에 맞춰서 사이즈를 자동조절 하는 역할
-			img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod='scale')";
-		} catch (e) {
-			if (!document.getElementById("ie_preview_error_" + View_area)) {
-				var info = document.createElement("<p>");
-				info.id = "ie_preview_error_" + View_area;
-				info.innerHTML = e.name;
-				preview.insertBefore(info, null);
-			}
-		}
-  //ie가 아닐때(크롬, 사파리, FF)
-	} else {
-		var files = targetObj.files;
-		for ( var i = 0; i < files.length; i++) {
-			var file = files[i];
-			var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
-			if (!file.type.match(imageType))
-				continue;
-			var prevImg = document.getElementById("prev_" + View_area); //이전에 미리보기가 있다면 삭제
-			if (prevImg) {
-				preview.removeChild(prevImg);
-			}
-			var img = document.createElement("img"); 
-			img.id = "prev_" + View_area;
-			img.classList.add("obj");
-			img.file = file;
-			img.style.width = '100%'; 
-			img.style.height = '100%';
-			preview.appendChild(img);
-			if (window.FileReader) { // FireFox, Chrome, Opera 확인.
-				var reader = new FileReader();
-				reader.onloadend = (function(aImg) {
-					return function(e) {
-						aImg.src = e.target.result;
-					};
-				})(img);
-				reader.readAsDataURL(file);
-			} else { // safari is not supported FileReader
-				//alert('not supported FileReader');
-				if (!document.getElementById("sfr_preview_error_"
-						+ View_area)) {
-					var info = document.createElement("p");
-					info.id = "sfr_preview_error_" + View_area;
-					info.innerHTML = "not supported FileReader";
-					preview.insertBefore(info, null);
-				}
-			}
-		}
-	}
-}
+                    //이미지 로딩, sizingMethod는 div에 맞춰서 사이즈를 자동조절 하는 역할
+                    img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + src +
+                        "', sizingMethod='scale')";
+                } catch (e) {
+                    if (!document.getElementById("ie_preview_error_" + View_area)) {
+                        var info = document.createElement("<p>");
+                        info.id = "ie_preview_error_" + View_area;
+                        info.innerHTML = e.name;
+                        preview.insertBefore(info, null);
+                    }
+                }
+                //ie가 아닐때(크롬, 사파리, FF)
+            } else {
+                var files = targetObj.files;
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
+                    if (!file.type.match(imageType))
+                        continue;
+                    var prevImg = document.getElementById("prev_" + View_area); //이전에 미리보기가 있다면 삭제
+                    if (prevImg) {
+                        preview.removeChild(prevImg);
+                    }
+                    var img = document.createElement("img");
+                    img.id = "prev_" + View_area;
+                    img.classList.add("obj");
+                    img.file = file;
+                    img.style.width = '100%';
+                    img.style.height = '100%';
+                    preview.appendChild(img);
+                    if (window.FileReader) { // FireFox, Chrome, Opera 확인.
+                        var reader = new FileReader();
+                        reader.onloadend = (function (aImg) {
+                            return function (e) {
+                                aImg.src = e.target.result;
+                            };
+                        })(img);
+                        reader.readAsDataURL(file);
+                    } else { // safari is not supported FileReader
+                        //alert('not supported FileReader');
+                        if (!document.getElementById("sfr_preview_error_" +
+                                View_area)) {
+                            var info = document.createElement("p");
+                            info.id = "sfr_preview_error_" + View_area;
+                            info.innerHTML = "not supported FileReader";
+                            preview.insertBefore(info, null);
+                        }
+                    }
+                }
+            }
+        }
     </script>
 </head>
 
 <body>
     <div class="snavbookmark container">
-       <div class="cattitle">
-         용품 구매 기록과 후기   
+        <div class="cattitle">
+            용품 구매 기록과 후기
         </div>
         <div class="memodate">
             <div class="prolist col-xs-12 col-sm-6 col-md-4">
-                <form class="form" role="form" autocomplete="off" method="POST" enctype="multipart/form-data" id="my-form">
+                <form class="form" role="form" autocomplete="off" method="POST" enctype="multipart/form-data"
+                    id="my-form">
                     <div class="form-group">
                         <div class="inputDnD">
                             <label class="sr-only" for="inputFile">사진 추가하기</label>
-                            <input type="file" name="profile_pt" id="profile_pt" onchange="previewImage(this,'View_area')">
-                            <div id='View_area' style='position:relative;  height: 250px; color: black; border: 0px solid black; dispaly: inline; margin:0 auto; '></div>
-                        </div> 
-                        <div class="form-group">
-                            <label for="inputNamae">이름</label>
-                            <input type="text" class="form-control" id="inputNamae" maxlength="25" name="name" placeholder="물품의 이름을 입력해주세요." required>
+                            <input type="file" name="profile_pt" id="profile_pt"
+                                onchange="previewImage(this,'View_area')">
+                            <div id='View_area'
+                                style='position:relative;  height: 250px; color: black; border: 0px solid black; dispaly: inline; margin:0 auto; '>
+                            </div>
                         </div>
-                        <div class="form-group  half_form">
-                            <label for="inputId">가격</label>
-                            <input type="number" class="form-control" id="inputId" maxlength="10" name="username" placeholder="가격을 기재해주세요." required>
-                        </div>
-                        <div class="form-group  half_form">
-                            <label for="inputId">구매일</label>
-                            <input type="text" class="form-control" id="inputId" maxlength="20" name="username" placeholder="구매일을 기재해주세요." required>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPhone">사용기간</label>
-                            <input type="text" class="form-control" name="phone_number" maxlength="20" id="mobile" placeholder="사용한 기간을 적어주세요." required/>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputContents">사용후기</label>
-                            <textarea name="opinion" cols="55" rows="10" class="form-control" name="title" id="inputContents" placeholder="사용 후기를 작성해주세요." required></textarea>
-                        </div> 
-                        
-                        <br>
-                        <div class="form-group">
-                            <button type="button" class="btn btn-success btn-lg float-right" id="submit-button">Register</button>
-                            <input type="submit" class="hide" id="real-submit"/>
-                        </div> 
-                    </div>    
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNamae">이름</label>
+                        <input type="text" class="form-control" id="inputNamae" maxlength="25" name="name"
+                            placeholder="물품의 이름을 입력해주세요." required>
+                    </div>
+                    <div class="form-group  half_form">
+                        <label for="inputId">가격</label>
+                        <input type="number" class="form-control" id="inputId" maxlength="10" name="username"
+                            placeholder="가격을 기재해주세요." required>
+                    </div>
+                    <div class="form-group  half_form">
+                        <label for="inputId">구매일</label>
+                        <input type="text" class="form-control" id="inputId" maxlength="20" name="username"
+                            placeholder="구매일을 기재해주세요." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone">사용기간</label>
+                        <input type="text" class="form-control" name="phone_number" maxlength="20" id="mobile"
+                            placeholder="사용한 기간을 적어주세요." required />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputContents">사용후기</label>
+                        <textarea name="opinion" cols="55" rows="10" class="form-control" name="title"
+                            id="inputContents" placeholder="사용 후기를 작성해주세요." required></textarea>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success btn-lg float-right"
+                            id="submit-button">Register</button>
+                        <input type="submit" class="hide" id="real-submit" />
+                    </div>
                 </form>
             </div>
             <div class="prolist col-xs-12 col-sm-6 col-md-4">
-                    <form class="form" role="form" autocomplete="off" method="POST" enctype="multipart/form-data" id="my-form">
-                        <div class="form-group">
-                            <div class="inputDnD">
-                                <label class="sr-only" for="inputFile">사진 추가하기</label>
-                                <input type="file" name="profile_pt" id="profile_pt" onchange="previewImage(this,'View_area')">
-                                <div id='View_area' style='position:relative;  height: 250px; color: black; border: 0px solid black; dispaly: inline; margin:0 auto; '></div>
-                            </div> 
-                            <div class="form-group">
-                                <label for="inputNamae">이름</label>
-                                <input type="text" class="form-control" id="inputNamae" maxlength="25" name="name" placeholder="물품의 이름을 입력해주세요." required>
+                <form class="form" role="form" autocomplete="off" method="POST" enctype="multipart/form-data"
+                    id="my-form">
+                    <div class="form-group">
+                        <div class="inputDnD">
+                            <label class="sr-only" for="inputFile">사진 추가하기</label>
+                            <input type="file" name="profile_pt" id="profile_pt"
+                                onchange="previewImage(this,'View_area')">
+                            <div id='View_area'
+                                style='position:relative;  height: 250px; color: black; border: 0px solid black; dispaly: inline; margin:0 auto; '>
                             </div>
-                            <div class="form-group  half_form">
-                                <label for="inputId">가격</label>
-                                <input type="number" class="form-control" id="inputId" maxlength="10" name="username" placeholder="가격을 기재해주세요." required>
-                            </div>
-                            <div class="form-group  half_form">
-                                <label for="inputId">구매일</label>
-                                <input type="text" class="form-control" id="inputId" maxlength="20" name="username" placeholder="구매일을 기재해주세요." required>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPhone">사용기간</label>
-                                <input type="text" class="form-control" name="phone_number" maxlength="20" id="mobile" placeholder="사용한 기간을 적어주세요." required/>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputContents">사용후기</label>
-                                <textarea name="opinion" cols="55" rows="10" class="form-control" name="title" id="inputContents" placeholder="사용 후기를 작성해주세요." required></textarea>
-                            </div> 
-                            
-                            <br>
-                            <div class="form-group">
-                                <button type="button" class="btn btn-success btn-lg float-right" id="submit-button">Register</button>
-                                <input type="submit" class="hide" id="real-submit"/>
-                            </div> 
-                        </div>    
-                    </form>
-                </div>
-                <div class="prolist col-xs-12 col-sm-6 col-md-4">
-                        <form class="form" role="form" autocomplete="off" method="POST" enctype="multipart/form-data" id="my-form">
-                            <div class="form-group">
-                                <div class="inputDnD">
-                                    <label class="sr-only" for="inputFile">사진 추가하기</label>
-                                    <input type="file" name="profile_pt" id="profile_pt" onchange="previewImage(this,'View_area')">
-                                    <div id='View_area' style='position:relative;  height: 250px; color: black; border: 0px solid black; dispaly: inline; margin:0 auto; '></div>
-                                </div> 
-                                <div class="form-group">
-                                    <label for="inputNamae">이름</label>
-                                    <input type="text" class="form-control" id="inputNamae" maxlength="25" name="name" placeholder="물품의 이름을 입력해주세요." required>
-                                </div>
-                                <div class="form-group  half_form">
-                                    <label for="inputId">가격</label>
-                                    <input type="number" class="form-control" id="inputId" maxlength="10" name="username" placeholder="가격을 기재해주세요." required>
-                                </div>
-                                <div class="form-group  half_form">
-                                    <label for="inputId">구매일</label>
-                                    <input type="text" class="form-control" id="inputId" maxlength="20" name="username" placeholder="구매일을 기재해주세요." required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPhone">사용기간</label>
-                                    <input type="text" class="form-control" name="phone_number" maxlength="20" id="mobile" placeholder="사용한 기간을 적어주세요." required/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputContents">사용후기</label>
-                                    <textarea name="opinion" cols="55" rows="10" class="form-control" name="title" id="inputContents" placeholder="사용 후기를 작성해주세요." required></textarea>
-                                </div> 
-                                
-                                <br>
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-success btn-lg float-right" id="submit-button">Register</button>
-                                    <input type="submit" class="hide" id="real-submit"/>
-                                </div> 
-                            </div>    
-                        </form>
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <label for="inputNamae">이름</label>
+                        <input type="text" class="form-control" id="inputNamae" maxlength="25" name="name"
+                            placeholder="물품의 이름을 입력해주세요." required>
+                    </div>
+                    <div class="form-group  half_form">
+                        <label for="inputId">가격</label>
+                        <input type="number" class="form-control" id="inputId" maxlength="10" name="username"
+                            placeholder="가격을 기재해주세요." required>
+                    </div>
+                    <div class="form-group  half_form">
+                        <label for="inputId">구매일</label>
+                        <input type="text" class="form-control" id="inputId" maxlength="20" name="username"
+                            placeholder="구매일을 기재해주세요." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone">사용기간</label>
+                        <input type="text" class="form-control" name="phone_number" maxlength="20" id="mobile"
+                            placeholder="사용한 기간을 적어주세요." required />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputContents">사용후기</label>
+                        <textarea name="opinion" cols="55" rows="10" class="form-control" name="title"
+                            id="inputContents" placeholder="사용 후기를 작성해주세요." required></textarea>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success btn-lg float-right"
+                            id="submit-button">Register</button>
+                        <input type="submit" class="hide" id="real-submit" />
+                    </div>
+                </form>
+            </div>
+            <div class="prolist col-xs-12 col-sm-6 col-md-4">
+                <form class="form" role="form" autocomplete="off" method="POST" enctype="multipart/form-data"
+                    id="my-form">
+                    <div class="form-group">
+                        <div class="inputDnD">
+                            <label class="sr-only" for="inputFile">사진 추가하기</label>
+                            <input type="file" name="profile_pt" id="profile_pt"
+                                onchange="previewImage(this,'View_area')">
+                            <div id='View_area'
+                                style='position:relative;  height: 250px; color: black; border: 0px solid black; dispaly: inline; margin:0 auto; '>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNamae">이름</label>
+                        <input type="text" class="form-control" id="inputNamae" maxlength="25" name="name"
+                            placeholder="물품의 이름을 입력해주세요." required>
+                    </div>
+                    <div class="form-group  half_form">
+                        <label for="inputId">가격</label>
+                        <input type="number" class="form-control" id="inputId" maxlength="10" name="username"
+                            placeholder="가격을 기재해주세요." required>
+                    </div>
+                    <div class="form-group  half_form">
+                        <label for="inputId">구매일</label>
+                        <input type="text" class="form-control" id="inputId" maxlength="20" name="username"
+                            placeholder="구매일을 기재해주세요." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone">사용기간</label>
+                        <input type="text" class="form-control" name="phone_number" maxlength="20" id="mobile"
+                            placeholder="사용한 기간을 적어주세요." required />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputContents">사용후기</label>
+                        <textarea name="opinion" cols="55" rows="10" class="form-control" name="title"
+                            id="inputContents" placeholder="사용 후기를 작성해주세요." required></textarea>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success btn-lg float-right"
+                            id="submit-button">Register</button>
+                        <input type="submit" class="hide" id="real-submit" />
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </body>
